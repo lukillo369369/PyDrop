@@ -1,0 +1,182 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Variable",
+      "x": -1940,
+      "y": 40,
+      "props": {
+        "name": "temperature",
+        "type": "Number",
+        "value": "85"
+      }
+    },
+    {
+      "id": "n2",
+      "kind": "Variable",
+      "x": -1940,
+      "y": 231,
+      "props": {
+        "name": "enabled",
+        "type": "Boolean",
+        "value": "True"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Compare",
+      "x": -1610,
+      "y": 40,
+      "props": {
+        "operator": ">=",
+        "a": "0",
+        "b": "80"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Assign",
+      "x": -1280,
+      "y": 40,
+      "props": {
+        "name": "hot",
+        "value": ""
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Boolean Logic",
+      "x": -950,
+      "y": 40,
+      "props": {
+        "operator": "AND",
+        "a": "True",
+        "b": "False"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Assign",
+      "x": -620,
+      "y": 40,
+      "props": {
+        "name": "cooling",
+        "value": ""
+      }
+    },
+    {
+      "id": "n7",
+      "kind": "Print",
+      "x": -290,
+      "y": 40,
+      "props": {
+        "label": "",
+        "value": ""
+      }
+    },
+    {
+      "id": "n8",
+      "kind": "Print",
+      "x": 40,
+      "y": 40,
+      "props": {
+        "label": "",
+        "value": ""
+      }
+    },
+    {
+      "id": "n9",
+      "kind": "Boolean Logic",
+      "x": -290,
+      "y": 260,
+      "props": {
+        "operator": "NOT",
+        "a": "True",
+        "b": "False"
+      }
+    },
+    {
+      "id": "n10",
+      "kind": "Main",
+      "x": -1940,
+      "y": 422,
+      "props": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "value",
+      "target": "n3",
+      "input": "a"
+    },
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n4",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n5",
+      "input": "a"
+    },
+    {
+      "source": "n2",
+      "output": "value",
+      "target": "n5",
+      "input": "b"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    },
+    {
+      "source": "n6",
+      "output": "result",
+      "target": "n7",
+      "input": "value"
+    },
+    {
+      "source": "n6",
+      "output": "result",
+      "target": "n9",
+      "input": "a"
+    },
+    {
+      "source": "n9",
+      "output": "result",
+      "target": "n8",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n6",
+      "output": "next",
+      "target": "n7",
+      "input": "run"
+    },
+    {
+      "source": "n7",
+      "output": "next",
+      "target": "n8",
+      "input": "run"
+    },
+    {
+      "source": "n10",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    }
+  ]
+}

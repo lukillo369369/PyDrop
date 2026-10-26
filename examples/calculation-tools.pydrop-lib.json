@@ -1,0 +1,26 @@
+{
+  "format": "pydrop-node-library",
+  "schema_version": 1,
+  "id": "calculation-tools",
+  "name": "Calculation tools (Executable Python)",
+  "version": "1.0.0",
+  "requirements": [],
+  "nodes": [
+    {
+      "id": "scale-and-describe",
+      "version": "1.0.0",
+      "name": "Scale and describe",
+      "category": "Calculations",
+      "description": "Multiply a number by a scale factor and produce both a numeric result and a readable message.",
+      "inputs": [
+        {"name": "value", "type": "Number", "default": "3"},
+        {"name": "factor", "type": "Number", "default": "2"}
+      ],
+      "outputs": [
+        {"name": "scaled", "type": "Number"},
+        {"name": "message", "type": "Text"}
+      ],
+      "implementation": "scaled = value * factor\nreturn {\"scaled\": scaled, \"message\": f\"Scaled: {scaled:g}\"}"
+    }
+  ]
+}

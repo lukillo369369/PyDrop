@@ -1,0 +1,277 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Serial Connect",
+      "x": 360.0,
+      "y": 40.0,
+      "props": {
+        "port": "SIMULATED",
+        "baud": "9600",
+        "timeout": "1",
+        "mode": "Simulation"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Print",
+      "x": 680.0,
+      "y": 40.0,
+      "props": {
+        "label": "Connection: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Serial Send",
+      "x": 1000.0,
+      "y": 40.0,
+      "props": {
+        "command": "READ",
+        "newline": "LF"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Serial Read Line",
+      "x": 1320.0,
+      "y": 40.0,
+      "props": {
+        "timeout": "1"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Branch",
+      "x": 1640.0,
+      "y": 40.0,
+      "props": {
+        "condition": "True"
+      }
+    },
+    {
+      "id": "n7",
+      "kind": "Parse Value",
+      "x": 1640.0,
+      "y": 290.0,
+      "props": {
+        "line": "",
+        "key": "temperature",
+        "separator": ","
+      }
+    },
+    {
+      "id": "n8",
+      "kind": "Parse Value",
+      "x": 1640.0,
+      "y": 510.0,
+      "props": {
+        "line": "",
+        "key": "light",
+        "separator": ","
+      }
+    },
+    {
+      "id": "n9",
+      "kind": "Print",
+      "x": 1960.0,
+      "y": 40.0,
+      "props": {
+        "label": "Temperature (C): ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n10",
+      "kind": "Print",
+      "x": 2280.0,
+      "y": 40.0,
+      "props": {
+        "label": "Light (ADC): ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n11",
+      "kind": "Serial Disconnect",
+      "x": 2600.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n12",
+      "kind": "Print",
+      "x": 2920.0,
+      "y": 40.0,
+      "props": {
+        "label": "Connection: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n13",
+      "kind": "Print",
+      "x": 1960.0,
+      "y": 330.0,
+      "props": {
+        "label": "Sensor read: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n14",
+      "kind": "Serial Disconnect",
+      "x": 2280.0,
+      "y": 330.0,
+      "props": {}
+    },
+    {
+      "id": "n15",
+      "kind": "Print",
+      "x": 2600.0,
+      "y": 330.0,
+      "props": {
+        "label": "Connection: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n2",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "next",
+      "target": "n3",
+      "input": "run"
+    },
+    {
+      "source": "n3",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    },
+    {
+      "source": "n4",
+      "output": "next",
+      "target": "n5",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "status",
+      "target": "n3",
+      "input": "value"
+    },
+    {
+      "source": "n5",
+      "output": "received",
+      "target": "n6",
+      "input": "condition"
+    },
+    {
+      "source": "n6",
+      "output": "true",
+      "target": "n9",
+      "input": "run"
+    },
+    {
+      "source": "n9",
+      "output": "next",
+      "target": "n10",
+      "input": "run"
+    },
+    {
+      "source": "n10",
+      "output": "next",
+      "target": "n11",
+      "input": "run"
+    },
+    {
+      "source": "n11",
+      "output": "next",
+      "target": "n12",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "line",
+      "target": "n7",
+      "input": "line"
+    },
+    {
+      "source": "n7",
+      "output": "result",
+      "target": "n9",
+      "input": "value"
+    },
+    {
+      "source": "n5",
+      "output": "line",
+      "target": "n8",
+      "input": "line"
+    },
+    {
+      "source": "n8",
+      "output": "result",
+      "target": "n10",
+      "input": "value"
+    },
+    {
+      "source": "n11",
+      "output": "status",
+      "target": "n12",
+      "input": "value"
+    },
+    {
+      "source": "n6",
+      "output": "false",
+      "target": "n13",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "status",
+      "target": "n13",
+      "input": "value"
+    },
+    {
+      "source": "n13",
+      "output": "next",
+      "target": "n14",
+      "input": "run"
+    },
+    {
+      "source": "n14",
+      "output": "next",
+      "target": "n15",
+      "input": "run"
+    },
+    {
+      "source": "n14",
+      "output": "status",
+      "target": "n15",
+      "input": "value"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <title>PyDrop</title>
+  <rect width="256" height="256" rx="52" fill="#101827"/>
+  <path d="M128 38 C111 65 63 112 63 153 C63 193 91 220 128 220 C165 220 193 193 193 153 C193 112 145 65 128 38Z" fill="#66e0bb"/>
+  <path d="M96 142 L127 165 L160 137 M127 165 L127 193" fill="none" stroke="#0c1a28" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#0c1a28"><circle cx="96" cy="142" r="12"/><circle cx="160" cy="137" r="12"/><circle cx="127" cy="193" r="10"/></g>
+  <circle cx="127" cy="165" r="12" fill="#edf3fc"/>
+</svg>

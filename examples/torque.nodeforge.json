@@ -1,0 +1,96 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Torque",
+      "x": 380.0,
+      "y": 210.0,
+      "props": {
+        "force": "1",
+        "distance": "1"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 210.0,
+      "props": {
+        "value": "100",
+        "unit": "N"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 430.0,
+      "props": {
+        "value": "250",
+        "unit": "mm"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Unit Convert",
+      "x": 720.0,
+      "y": 210.0,
+      "props": {
+        "value": "1",
+        "from_unit": "N*m",
+        "unit": "N*m"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 1060.0,
+      "y": 40.0,
+      "props": {
+        "label": "Torque: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n2",
+      "input": "force"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n2",
+      "input": "distance"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n5",
+      "input": "value"
+    },
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 60.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Variable",
+      "x": 40.0,
+      "y": 230.0,
+      "props": {
+        "name": "score",
+        "type": "Number",
+        "value": "72"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Compare",
+      "x": 330.0,
+      "y": 260.0,
+      "props": {
+        "operator": ">=",
+        "a": "0",
+        "b": "60"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Branch",
+      "x": 620.0,
+      "y": 60.0,
+      "props": {
+        "condition": "True"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Print",
+      "x": 930.0,
+      "y": 60.0,
+      "props": {
+        "label": "",
+        "value": "Passed! Score is at least 60."
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 930.0,
+      "y": 290.0,
+      "props": {
+        "label": "",
+        "value": "Keep practicing. Score is below 60."
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "value",
+      "target": "n3",
+      "input": "a"
+    },
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n4",
+      "input": "condition"
+    },
+    {
+      "source": "n4",
+      "output": "true",
+      "target": "n5",
+      "input": "run"
+    },
+    {
+      "source": "n4",
+      "output": "false",
+      "target": "n6",
+      "input": "run"
+    }
+  ]
+}

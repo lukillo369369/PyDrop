@@ -1,0 +1,4 @@
+# Core editor and simulation use only Python's standard library and Tcl/Tk.
+# Include hardware serial support in distributed desktop and graph applications.
+pyserial==3.5
+

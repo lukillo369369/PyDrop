@@ -1,0 +1,96 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Ohm's Law",
+      "x": 380.0,
+      "y": 210.0,
+      "props": {
+        "current": "1",
+        "resistance": "1"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 210.0,
+      "props": {
+        "value": "250",
+        "unit": "mA"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 430.0,
+      "props": {
+        "value": "2",
+        "unit": "kohm"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Unit Convert",
+      "x": 720.0,
+      "y": 210.0,
+      "props": {
+        "value": "1",
+        "from_unit": "V",
+        "unit": "V"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 1060.0,
+      "y": 40.0,
+      "props": {
+        "label": "Voltage: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n2",
+      "input": "current"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n2",
+      "input": "resistance"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n5",
+      "input": "value"
+    },
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    }
+  ]
+}

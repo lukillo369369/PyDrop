@@ -1,0 +1,49 @@
+NODEFORGE 0.1 — VISUAL PYTHON
+
+WINDOWS
+1. Extract the entire ZIP. Do not run the program inside the ZIP preview.
+2. Install Python 3.10 or newer if needed. Include Tcl/Tk in the installer.
+3. Double-click Start_NodeForge.bat.
+
+OR, FROM A TERMINAL IN THIS FOLDER
+    python nodeforge.py
+
+No pip packages are required. Python must include Tkinter/Tcl/Tk.
+Check your installation with: python -m tkinter
+
+YOUR FIRST RUN
+The starting graph follows your Main -> function + variables sketch.
+Press Run graph (or F5). Output should show:
+
+    Force (N): 24.525
+
+Select mass_kg, change its Value from 2.5 to 10, and press Apply changes.
+Run again. The result becomes 98.1 N.
+
+BUILD SOMETHING
+- Drag nodes from the left palette onto the canvas.
+- Drag a node's body to move it.
+- Click an output pin, then an input pin, to connect them.
+  You can also drag between the pins.
+- White diamonds: what runs next.
+- Green circles: what value gets passed.
+- Edit the selected node in the inspector at the right. Press Enter to apply.
+- Left-click and drag a node to move it; selected nodes move together.
+- Left-drag empty space to pan. Shift-drag empty space to box-select.
+- Shift-click toggles nodes in the selection. Middle/Alt-drag also pans.
+- Scroll to zoom. Click Fit to see the whole graph. F1 lists keyboard shortcuts.
+- Right-click a node, wire, or pin for actions.
+- Save keeps an editable .drop.json project (Ctrl+S).
+- Save As creates a separately named project (Ctrl+Shift+S).
+- Open accepts .drop.json and legacy .nodeforge.json projects.
+- Functions > New function creates a graph with named inputs and returns.
+- Add a Function Call, then double-click it to edit its shared body.
+- Apply function updates the project; save the project to keep it on disk.
+- Try Examples > Reusable function | Two rectangles for two calls to one graph.
+- Export .py produces a standalone Python program.
+
+There is a second example under Examples: a temperature-controlled fan decision.
+It prints Fan ON or Fan OFF; it does not control physical hardware.
+
+This version builds new programs from nodes. It does not import arbitrary
+existing Python code. See README.md for capabilities and current limits.

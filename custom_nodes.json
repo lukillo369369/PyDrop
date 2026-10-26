@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "nodes": [
+    {
+      "template_name": "compare two values",
+      "description": "Add a percentage of tax to a price.",
+      "expression": "value1 > value2",
+      "inputs": [
+        {
+          "name": "value1",
+          "default": "100"
+        },
+        {
+          "name": "value2",
+          "default": "10"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 60.0,
+      "y": 60.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Variable",
+      "x": 60.0,
+      "y": 210.0,
+      "props": {
+        "name": "mass_kg",
+        "type": "Number",
+        "value": "2.5"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Variable",
+      "x": 60.0,
+      "y": 370.0,
+      "props": {
+        "name": "acceleration",
+        "type": "Number",
+        "value": "9.81"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Variable",
+      "x": 350.0,
+      "y": 410.0,
+      "props": {
+        "name": "offset_n",
+        "type": "Number",
+        "value": "0"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Function",
+      "x": 370.0,
+      "y": 100.0,
+      "props": {
+        "name": "calculate_force",
+        "expression": "round(a * b + c, 3)",
+        "a": "0",
+        "b": "0",
+        "c": "0"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 690.0,
+      "y": 100.0,
+      "props": {
+        "label": "Force (N): ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n5",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "value",
+      "target": "n5",
+      "input": "a"
+    },
+    {
+      "source": "n3",
+      "output": "value",
+      "target": "n5",
+      "input": "b"
+    },
+    {
+      "source": "n4",
+      "output": "value",
+      "target": "n5",
+      "input": "c"
+    },
+    {
+      "source": "n5",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    }
+  ]
+}

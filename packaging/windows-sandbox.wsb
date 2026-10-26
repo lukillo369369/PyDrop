@@ -1,0 +1,20 @@
+<Configuration>
+  <!-- Replace BOTH host paths with existing, absolute paths before opening. -->
+  <!-- Stage only distribution artifacts and clean_windows_test.ps1 in input. -->
+  <Networking>Disable</Networking>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\PyDropSandbox\input</HostFolder>
+      <SandboxFolder>C:\PyDropArtifacts</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    <MappedFolder>
+      <HostFolder>C:\PyDropSandbox\reports</HostFolder>
+      <SandboxFolder>C:\PyDropReports</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <LogonCommand>
+    <Command>powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\PyDropArtifacts\clean_windows_test.ps1 -ArtifactRoot C:\PyDropArtifacts -GraphExecutable C:\PyDropArtifacts\graph\SimulatedSensor.exe -ReportDirectory C:\PyDropReports</Command>
+  </LogonCommand>
+</Configuration>

@@ -1,0 +1,96 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Force",
+      "x": 380.0,
+      "y": 210.0,
+      "props": {
+        "mass": "1",
+        "acceleration": "1"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 210.0,
+      "props": {
+        "value": "2500",
+        "unit": "g"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 430.0,
+      "props": {
+        "value": "9.81",
+        "unit": "m/s^2"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Unit Convert",
+      "x": 720.0,
+      "y": 210.0,
+      "props": {
+        "value": "1",
+        "from_unit": "N",
+        "unit": "N"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 1060.0,
+      "y": 40.0,
+      "props": {
+        "label": "Force: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n2",
+      "input": "mass"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n2",
+      "input": "acceleration"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n5",
+      "input": "value"
+    },
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 50.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Variable",
+      "x": 40.0,
+      "y": 240.0,
+      "props": {
+        "name": "greeting",
+        "type": "Text",
+        "value": "Hello from pydrop!"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Print",
+      "x": 370.0,
+      "y": 50.0,
+      "props": {
+        "label": "",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n3",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "value",
+      "target": "n3",
+      "input": "value"
+    }
+  ]
+}

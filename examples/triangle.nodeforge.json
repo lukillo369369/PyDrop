@@ -1,0 +1,90 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Function",
+      "x": 370.0,
+      "y": 40.0,
+      "props": {
+        "name": "hypotenuse",
+        "expression": "round(sqrt(a * a + b * b), 3)",
+        "a": "0",
+        "b": "0",
+        "c": "0"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Print",
+      "x": 700.0,
+      "y": 40.0,
+      "props": {
+        "label": "Hypotenuse: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Variable",
+      "x": 40.0,
+      "y": 210.0,
+      "props": {
+        "name": "side_a",
+        "type": "Number",
+        "value": "3"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Variable",
+      "x": 40.0,
+      "y": 365.0,
+      "props": {
+        "name": "side_b",
+        "type": "Number",
+        "value": "4"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n2",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "next",
+      "target": "n3",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n3",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "value",
+      "target": "n2",
+      "input": "a"
+    },
+    {
+      "source": "n5",
+      "output": "value",
+      "target": "n2",
+      "input": "b"
+    }
+  ]
+}

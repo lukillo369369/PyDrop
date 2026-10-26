@@ -1,0 +1,65 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Variable",
+      "x": 40.0,
+      "y": 230.0,
+      "props": {
+        "name": "requested_power",
+        "type": "Number",
+        "value": "125"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Clamp",
+      "x": 350.0,
+      "y": 230.0,
+      "props": {
+        "value": "50",
+        "min": "0",
+        "max": "100"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Print",
+      "x": 660.0,
+      "y": 40.0,
+      "props": {
+        "label": "Clamped power: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "value",
+      "target": "n3",
+      "input": "value"
+    },
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n4",
+      "input": "value"
+    }
+  ]
+}

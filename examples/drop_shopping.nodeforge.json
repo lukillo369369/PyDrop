@@ -1,0 +1,180 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Variable",
+      "x": -2270,
+      "y": 40,
+      "props": {
+        "name": "price",
+        "type": "Number",
+        "value": "12.5"
+      }
+    },
+    {
+      "id": "n2",
+      "kind": "Variable",
+      "x": -2270,
+      "y": 231,
+      "props": {
+        "name": "quantity",
+        "type": "Number",
+        "value": "3"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Math",
+      "x": -1940,
+      "y": 40,
+      "props": {
+        "operator": "*",
+        "a": "0",
+        "b": "0"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Assign",
+      "x": -1610,
+      "y": 40,
+      "props": {
+        "name": "total",
+        "value": ""
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Input",
+      "x": -1280,
+      "y": 40,
+      "props": {
+        "prompt": "Your name? "
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Assign",
+      "x": -950,
+      "y": 40,
+      "props": {
+        "name": "name",
+        "value": ""
+      }
+    },
+    {
+      "id": "n7",
+      "kind": "Print",
+      "x": -290,
+      "y": 40,
+      "props": {
+        "label": "",
+        "value": ""
+      }
+    },
+    {
+      "id": "n8",
+      "kind": "Text Join",
+      "x": -620,
+      "y": 40,
+      "props": {
+        "a": "Hello ",
+        "b": "pydrop!",
+        "separator": ""
+      }
+    },
+    {
+      "id": "n9",
+      "kind": "Print",
+      "x": 40,
+      "y": 40,
+      "props": {
+        "label": "",
+        "value": ""
+      }
+    },
+    {
+      "id": "n10",
+      "kind": "Main",
+      "x": -2270,
+      "y": 422,
+      "props": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "value",
+      "target": "n3",
+      "input": "a"
+    },
+    {
+      "source": "n2",
+      "output": "value",
+      "target": "n3",
+      "input": "b"
+    },
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n4",
+      "input": "value"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    },
+    {
+      "source": "n6",
+      "output": "result",
+      "target": "n8",
+      "input": "b"
+    },
+    {
+      "source": "n8",
+      "output": "result",
+      "target": "n7",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n9",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "next",
+      "target": "n5",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n6",
+      "output": "next",
+      "target": "n7",
+      "input": "run"
+    },
+    {
+      "source": "n7",
+      "output": "next",
+      "target": "n9",
+      "input": "run"
+    },
+    {
+      "source": "n10",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    }
+  ]
+}

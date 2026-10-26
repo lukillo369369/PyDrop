@@ -1,0 +1,139 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Input",
+      "x": 350.0,
+      "y": 40.0,
+      "props": {
+        "prompt": "First number: "
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Input",
+      "x": 660.0,
+      "y": 40.0,
+      "props": {
+        "prompt": "Second number: "
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Convert",
+      "x": 350.0,
+      "y": 260.0,
+      "props": {
+        "type": "Number",
+        "value": "0"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Convert",
+      "x": 660.0,
+      "y": 260.0,
+      "props": {
+        "type": "Number",
+        "value": "0"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Math",
+      "x": 660.0,
+      "y": 460.0,
+      "props": {
+        "operator": "+",
+        "a": "0",
+        "b": "0"
+      }
+    },
+    {
+      "id": "n7",
+      "kind": "Text Join",
+      "x": 970.0,
+      "y": 260.0,
+      "props": {
+        "a": "Sum: ",
+        "b": "pydrop!",
+        "separator": ""
+      }
+    },
+    {
+      "id": "n8",
+      "kind": "Print",
+      "x": 970.0,
+      "y": 40.0,
+      "props": {
+        "label": "",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n2",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "next",
+      "target": "n3",
+      "input": "run"
+    },
+    {
+      "source": "n3",
+      "output": "next",
+      "target": "n8",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n4",
+      "input": "value"
+    },
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n5",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n6",
+      "input": "a"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "b"
+    },
+    {
+      "source": "n6",
+      "output": "result",
+      "target": "n7",
+      "input": "b"
+    },
+    {
+      "source": "n7",
+      "output": "result",
+      "target": "n8",
+      "input": "value"
+    }
+  ]
+}

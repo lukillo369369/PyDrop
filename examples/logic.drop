@@ -1,0 +1,6 @@
+let temperature be 85
+let enabled be true
+let hot be temperature greater than or equal to 80
+let cooling be hot and enabled
+say cooling
+say not cooling

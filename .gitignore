@@ -1,0 +1,8 @@
+.venv*/
+.build-tools/
+build/
+dist/
+__pycache__/
+*.py[cod]
+.idea/
+executables/

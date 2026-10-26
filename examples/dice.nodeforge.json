@@ -1,0 +1,55 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Random",
+      "x": 350.0,
+      "y": 40.0,
+      "props": {
+        "mode": "Integer",
+        "min": "1",
+        "max": "6",
+        "seed": "42"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Print",
+      "x": 660.0,
+      "y": 40.0,
+      "props": {
+        "label": "Dice roll: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n2",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "next",
+      "target": "n3",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n3",
+      "input": "value"
+    }
+  ]
+}

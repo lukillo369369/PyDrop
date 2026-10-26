@@ -1,0 +1,174 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "CSV Input",
+      "x": 350.0,
+      "y": 40.0,
+      "props": {
+        "path": "experimental_measurements.csv",
+        "delimiter": ",",
+        "x_column": "voltage_V",
+        "y_column": "current_A"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Math",
+      "x": 350.0,
+      "y": 300.0,
+      "props": {
+        "operator": "*",
+        "a": "0",
+        "b": "0"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Data Table",
+      "x": 690.0,
+      "y": 40.0,
+      "props": {
+        "columns": "",
+        "column_name": "power_W"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Line Plot",
+      "x": 1030.0,
+      "y": 40.0,
+      "props": {
+        "x_column": "time_s",
+        "y_column": "power_W",
+        "title": "Experimental electrical power",
+        "x_label": "Time (s)",
+        "y_label": "Power (W)"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Scatter Plot",
+      "x": 1370.0,
+      "y": 40.0,
+      "props": {
+        "x_column": "voltage_V",
+        "y_column": "current_A",
+        "title": "Measured current versus voltage",
+        "x_label": "Voltage (V)",
+        "y_label": "Current (A)"
+      }
+    },
+    {
+      "id": "n7",
+      "kind": "CSV Output",
+      "x": 1710.0,
+      "y": 40.0,
+      "props": {
+        "path": "experimental_results.csv",
+        "columns": "",
+        "delimiter": ",",
+        "mode": "Overwrite"
+      }
+    },
+    {
+      "id": "n8",
+      "kind": "Print",
+      "x": 2050.0,
+      "y": 40.0,
+      "props": {
+        "label": "",
+        "value": "Calculated power_W = voltage_V * current_A; wrote experimental_results.csv"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n2",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    },
+    {
+      "source": "n4",
+      "output": "next",
+      "target": "n5",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n6",
+      "output": "next",
+      "target": "n7",
+      "input": "run"
+    },
+    {
+      "source": "n7",
+      "output": "next",
+      "target": "n8",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "x",
+      "target": "n3",
+      "input": "a"
+    },
+    {
+      "source": "n2",
+      "output": "y",
+      "target": "n3",
+      "input": "b"
+    },
+    {
+      "source": "n2",
+      "output": "data",
+      "target": "n4",
+      "input": "data"
+    },
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n4",
+      "input": "values"
+    },
+    {
+      "source": "n4",
+      "output": "data",
+      "target": "n5",
+      "input": "data"
+    },
+    {
+      "source": "n4",
+      "output": "data",
+      "target": "n6",
+      "input": "data"
+    },
+    {
+      "source": "n4",
+      "output": "data",
+      "target": "n7",
+      "input": "data"
+    }
+  ]
+}

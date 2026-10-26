@@ -1,0 +1,96 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 40.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Electrical Power",
+      "x": 380.0,
+      "y": 210.0,
+      "props": {
+        "voltage": "1",
+        "current": "1"
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 210.0,
+      "props": {
+        "value": "12",
+        "unit": "V"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Quantity",
+      "x": 40.0,
+      "y": 430.0,
+      "props": {
+        "value": "500",
+        "unit": "mA"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Unit Convert",
+      "x": 720.0,
+      "y": 210.0,
+      "props": {
+        "value": "1",
+        "from_unit": "W",
+        "unit": "W"
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 1060.0,
+      "y": 40.0,
+      "props": {
+        "label": "Power: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n3",
+      "output": "result",
+      "target": "n2",
+      "input": "voltage"
+    },
+    {
+      "source": "n4",
+      "output": "result",
+      "target": "n2",
+      "input": "current"
+    },
+    {
+      "source": "n2",
+      "output": "result",
+      "target": "n5",
+      "input": "value"
+    },
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "result",
+      "target": "n6",
+      "input": "value"
+    }
+  ]
+}

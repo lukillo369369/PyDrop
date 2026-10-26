@@ -1,0 +1,299 @@
+{
+  "format": "nodeforge",
+  "version": 1,
+  "nodes": [
+    {
+      "id": "n1",
+      "kind": "Main",
+      "x": 30.0,
+      "y": 40.0,
+      "props": {}
+    },
+    {
+      "id": "n2",
+      "kind": "Function Call",
+      "x": 360.0,
+      "y": 40.0,
+      "props": {
+        "function": "rectangle_metrics",
+        "inputs": [
+          {
+            "name": "width",
+            "default": "2"
+          },
+          {
+            "name": "height",
+            "default": "3"
+          }
+        ],
+        "returns": [
+          "area",
+          "perimeter"
+        ]
+      }
+    },
+    {
+      "id": "n3",
+      "kind": "Print",
+      "x": 710.0,
+      "y": 40.0,
+      "props": {
+        "label": "First area: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n4",
+      "kind": "Print",
+      "x": 1040.0,
+      "y": 40.0,
+      "props": {
+        "label": "First perimeter: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n5",
+      "kind": "Function Call",
+      "x": 360.0,
+      "y": 380.0,
+      "props": {
+        "function": "rectangle_metrics",
+        "inputs": [
+          {
+            "name": "width",
+            "default": "4"
+          },
+          {
+            "name": "height",
+            "default": "5"
+          }
+        ],
+        "returns": [
+          "area",
+          "perimeter"
+        ]
+      }
+    },
+    {
+      "id": "n6",
+      "kind": "Print",
+      "x": 710.0,
+      "y": 380.0,
+      "props": {
+        "label": "Second area: ",
+        "value": "Hello from NodeForge!"
+      }
+    },
+    {
+      "id": "n7",
+      "kind": "Print",
+      "x": 1040.0,
+      "y": 380.0,
+      "props": {
+        "label": "Second perimeter: ",
+        "value": "Hello from NodeForge!"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n1",
+      "output": "next",
+      "target": "n2",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "next",
+      "target": "n3",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "area",
+      "target": "n3",
+      "input": "value"
+    },
+    {
+      "source": "n3",
+      "output": "next",
+      "target": "n4",
+      "input": "run"
+    },
+    {
+      "source": "n2",
+      "output": "perimeter",
+      "target": "n4",
+      "input": "value"
+    },
+    {
+      "source": "n4",
+      "output": "next",
+      "target": "n5",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "next",
+      "target": "n6",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "area",
+      "target": "n6",
+      "input": "value"
+    },
+    {
+      "source": "n6",
+      "output": "next",
+      "target": "n7",
+      "input": "run"
+    },
+    {
+      "source": "n5",
+      "output": "perimeter",
+      "target": "n7",
+      "input": "value"
+    }
+  ],
+  "functions": {
+    "rectangle_metrics": {
+      "inputs": [
+        "width",
+        "height"
+      ],
+      "returns": [
+        "area",
+        "perimeter"
+      ],
+      "graph": {
+        "format": "nodeforge",
+        "version": 1,
+        "nodes": [
+          {
+            "id": "n1",
+            "kind": "Main",
+            "x": 40.0,
+            "y": 40.0,
+            "props": {}
+          },
+          {
+            "id": "n2",
+            "kind": "Function Inputs",
+            "x": 40.0,
+            "y": 230.0,
+            "props": {
+              "names": [
+                "width",
+                "height"
+              ]
+            }
+          },
+          {
+            "id": "n3",
+            "kind": "Return",
+            "x": 1040,
+            "y": 40.0,
+            "props": {
+              "values": [
+                {
+                  "name": "area",
+                  "default": "0"
+                },
+                {
+                  "name": "perimeter",
+                  "default": "0"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n4",
+            "kind": "Math",
+            "x": 360.0,
+            "y": 210.0,
+            "props": {
+              "operator": "*",
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "n5",
+            "kind": "Math",
+            "x": 360.0,
+            "y": 450.0,
+            "props": {
+              "operator": "+",
+              "a": "0",
+              "b": "0"
+            }
+          },
+          {
+            "id": "n6",
+            "kind": "Math",
+            "x": 700.0,
+            "y": 450.0,
+            "props": {
+              "operator": "*",
+              "a": "0",
+              "b": "2"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "source": "n1",
+            "output": "next",
+            "target": "n3",
+            "input": "run"
+          },
+          {
+            "source": "n2",
+            "output": "width",
+            "target": "n4",
+            "input": "a"
+          },
+          {
+            "source": "n2",
+            "output": "height",
+            "target": "n4",
+            "input": "b"
+          },
+          {
+            "source": "n2",
+            "output": "width",
+            "target": "n5",
+            "input": "a"
+          },
+          {
+            "source": "n2",
+            "output": "height",
+            "target": "n5",
+            "input": "b"
+          },
+          {
+            "source": "n5",
+            "output": "result",
+            "target": "n6",
+            "input": "a"
+          },
+          {
+            "source": "n4",
+            "output": "result",
+            "target": "n3",
+            "input": "area"
+          },
+          {
+            "source": "n6",
+            "output": "result",
+            "target": "n3",
+            "input": "perimeter"
+          }
+        ]
+      }
+    }
+  }
+}

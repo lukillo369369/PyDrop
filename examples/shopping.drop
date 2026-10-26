@@ -1,0 +1,7 @@
+# Drop's starter syntax: values, arithmetic, questions, and output.
+let price be 12.5
+let quantity be 3
+let total be price times quantity
+ask "Your name? " into name
+say "Hello " plus name
+say total
