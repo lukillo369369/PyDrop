@@ -125,7 +125,9 @@ function Test-Desktop([string]$Directory, [string]$Label) {
 
 try {
     Start-Transcript -LiteralPath (Join-Path $reportPath 'smoke-transcript.txt') -Force | Out-Null
-    $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot;$env:SystemRoot\System32\Wbem;$env:SystemRoot\System32\WindowsPowerShell\v1.0"
+    # The all-users Python launcher can live at $env:SystemRoot\py.exe.
+    # Keep the Windows utilities without exposing the Windows-root launcher.
+    $env:PATH = "$env:SystemRoot\System32;$env:SystemRoot\System32\Wbem;$env:SystemRoot\System32\WindowsPowerShell\v1.0"
     foreach ($name in $environmentNames) {
         if ($name -notin @('PATH', 'LOCALAPPDATA', 'APPDATA', 'PYTHONNOUSERSITE')) {
             [Environment]::SetEnvironmentVariable($name, $null, 'Process')
@@ -137,7 +139,10 @@ try {
     $env:APPDATA = Join-Path $testRoot 'UserData\Roaming'
     [void](New-Item -ItemType Directory -Path $env:LOCALAPPDATA, $env:APPDATA -Force)
     $pythonCommands = @(Get-Command python, python3, py -ErrorAction SilentlyContinue)
-    if ($pythonCommands.Count) { throw 'A Python command is still discoverable after PATH isolation.' }
+    if ($pythonCommands.Count) {
+        $discoveredPython = ($pythonCommands | ForEach-Object { "$($_.Name): $($_.Definition)" }) -join '; '
+        throw "A Python command is still discoverable after PATH isolation: $discoveredPython"
+    }
     $summary.checks['python_not_on_path'] = $true
     $summary.checks['source_checkout_not_required'] = $true
 
